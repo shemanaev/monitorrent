@@ -11,16 +11,12 @@ environment:
     # a later point release.
     # See: http://www.appveyor.com/docs/installed-software#python
 
+    - PYTHON: "C:\\Python38"
+      PYTHON_VERSION: "3.8.x"
+      PYTHON_ARCH: "32"
+
     - PYTHON: "C:\\Python37"
       PYTHON_VERSION: "3.7.x"
-      PYTHON_ARCH: "32"
-
-    - PYTHON: "C:\\Python36"
-      PYTHON_VERSION: "3.6.x"
-      PYTHON_ARCH: "32"
-
-    - PYTHON: "C:\\Python35"
-      PYTHON_VERSION: "3.5.x"
       PYTHON_ARCH: "32"
 
 install:
@@ -85,9 +81,3 @@ on_success:
 test_script:
   # Run the project tests
   - py.test --cov=monitorrent --cov-report html --html=report.html -rw %APPVEYOR_BUILD_FOLDER%/tests
-
-notifications:
-  - provider: Slack
-    auth_token:
-      secure: BBMdcjCzNea28kr0kIVEOHIJNtJ2jgDZbkw+4aa9dUmTuIXTqzRMooguSMzQLZ+dehfFkHE5A5dzfSCUecL8oQ==
-    channel: '#appveyor'
