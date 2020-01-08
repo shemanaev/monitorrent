@@ -65,8 +65,8 @@ class AnilibriaTrackerUpgradeTest(UpgradeTestCase):
             topics = [row2dict(t, self.AnilibriaTopic1) for t in db.query(self.AnilibriaTopic1)]
             base_topics = [row2dict(t, self.BaseTopic1) for t in db.query(self.BaseTopic1)]
 
-        assert topics[0]['format_list'] == u'HDTVRip 1080p,HDTVRip 720p'
-        assert topics[0]['format'] == u'HDTVRip 1080p'
+        assert topics[0]['format_list'] == u'Серия 1-13 [HDTVRip 1080p],Серия 1-13 [HDTVRip 720p]'
+        assert topics[0]['format'] == u'Серия 1-13 [HDTVRip 1080p]'
         assert base_topics[0]['status'] == Status.Ok
 
         assert base_topics[1]['status'] == Status.Error

@@ -36,7 +36,7 @@ class AnilibriaTrackerTest(TestCase):
         result = self.tracker.parse_url(url)
         name = u"Инуяшики / Inuyashiki"
         self.assertEqual(result["original_name"], name)
-        self.assertEqual(result["format_list"], ['HDTV-Rip 720p'])
+        self.assertEqual(result["format_list"], ['Серия 1-11 [HDTV-Rip 720p]'])
 
     @use_vcr
     def test_parse_wrong_url(self):
@@ -49,9 +49,9 @@ class AnilibriaTrackerTest(TestCase):
                          "https://www.anilibria.tv/upload/torrents/4045.torrent")
         self.assertEqual(self.tracker.get_download_url("https://www.anilibria.tv/release/seishun-buta-yarou-wa-bunny-girl-senpai-no-yume-wo-minai.html", ""),
                          "https://www.anilibria.tv/upload/torrents/6029.torrent")
-        self.assertEqual(self.tracker.get_download_url("https://www.anilibria.tv/release/seishun-buta-yarou-wa-bunny-girl-senpai-no-yume-wo-minai.html", "HDTVRip 720p"),
+        self.assertEqual(self.tracker.get_download_url("https://www.anilibria.tv/release/seishun-buta-yarou-wa-bunny-girl-senpai-no-yume-wo-minai.html", "Серия 1-13 [HDTVRip 720p]"),
                          "https://www.anilibria.tv/upload/torrents/6028.torrent")
-        self.assertEqual(self.tracker.get_download_url("https://www.anilibria.tv/release/seishun-buta-yarou-wa-bunny-girl-senpai-no-yume-wo-minai.html", "HDTVRip 1080p"),
+        self.assertEqual(self.tracker.get_download_url("https://www.anilibria.tv/release/seishun-buta-yarou-wa-bunny-girl-senpai-no-yume-wo-minai.html", "Серия 1-13 [HDTVRip 1080p]"),
                          "https://www.anilibria.tv/upload/torrents/6029.torrent")
 
     @use_vcr

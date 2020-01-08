@@ -95,7 +95,6 @@ class AnilibriaTvTracker(object):
     tracker_settings = None
     _tracker_regex = re.compile(r'^https://(www\.)?anilibria.tv/release/.*\.html$')
     _title_regex = re.compile(r'^.* / .*$')
-    _format_regex = re.compile(r'^.*\[(.*)\]$')
 
     def can_parse_url(self, url):
         return self._tracker_regex.match(url) is not None
@@ -152,9 +151,7 @@ class AnilibriaTvTracker(object):
         raw_list = soup.select('table#publicTorrentTable td[class="torrentcol1"]')
         format_list = []
         for f in raw_list:
-            match = AnilibriaTvTracker._format_regex.match(f.text)
-            if match:
-                format_list.append(match.group(1))
+            format_list.append(f.text)
         return format_list
 
 
